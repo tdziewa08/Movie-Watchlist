@@ -27,7 +27,7 @@ if(searchBtn || searchBar)
 document.addEventListener('click', (e) => {
         if(e.target.dataset.add)
         {
-            fetch(`http://www.omdbapi.com/?apikey=f54021a&i=${e.target.dataset.id}&plot=short`)
+            fetch(`https://www.omdbapi.com/?apikey=f54021a&i=${e.target.dataset.id}&plot=short`)
                 .then(response => response.json())
                 .then(data => {
                     if(storedArray)
@@ -54,13 +54,13 @@ document.addEventListener('click', (e) => {
 })
 
 async function getData() {
-    const res = await fetch(`http://www.omdbapi.com/?apikey=f54021a&s=${searchBar.value}&type=movie`)
+    const res = await fetch(`https://www.omdbapi.com/?apikey=f54021a&s=${searchBar.value}&type=movie`)
     const data = await res.json()
     console.log(data)
     searchBar.value = ""
     movieList.innerHTML = ""
     data.Search.forEach(movie => {
-        fetch(`http://www.omdbapi.com/?apikey=f54021a&i=${movie.imdbID}&plot=short`)
+        fetch(`https://www.omdbapi.com/?apikey=f54021a&i=${movie.imdbID}&plot=short`)
             .then(response => response.json())
             .then(data => {
                 movieList.innerHTML += `
